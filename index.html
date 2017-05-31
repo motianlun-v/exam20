@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title></title>
+		<style>
+			span{
+				display: inline-block;
+				width: 50px;
+				height: 50px;
+				line-height: 50px;
+				text-align: center;
+				border: 1px solid ;
+			}
+		</style>
+	</head>
+	<body ng-app='app'>
+		<div ng-controller='shopCur'>
+			<p>
+				<span ng-click='cur()'>-</span>
+				<span>{{cut}}</span>
+				<span ng-click='add()'>+</span>
+			</p>
+			<p>总价{{total}}</p>
+		</div>
+		<script src="../bin/angular.js"></script>
+		<script type="text/javascript">
+			angular.module('app',[])
+			.controller('shopCur',function($scope){
+				$scope.cut=0;
+			$scope.price=100;
+				$scope.cur=function(){
+					$scope.cut--;
+					$scope.total=$scope.cut*$scope.price;
+				}
+				$scope.add=function(){
+					$scope.cut++;
+					$scope.total=$scope.cut*$scope.price;
+				}
+				
+			})
+		</script>
+	</body>
+</html>
